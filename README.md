@@ -21,7 +21,7 @@ Folder **src/resources/** contains config files for **shopping-cart** Spring Boo
 * **src/resources/application.properties** - main configuration file. Here it is possible to change admin username/password,
 as well as change the port number.
 
-## How to run
+### How to run
 
 There are several ways to run the application. You can run it from the command line with included Maven Wrapper, Maven or Docker. 
 
