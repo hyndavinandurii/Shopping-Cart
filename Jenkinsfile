@@ -44,13 +44,7 @@ pipeline {
                     }
                 }
             }
-        }
-        stage('Trigger CD Pipeline') {
-            steps{
-                build job: "CD_Pipeline" , wait:true
-            }
-        }
-        
+        }   
         
     }
 }
