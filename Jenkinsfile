@@ -40,6 +40,7 @@ pipeline {
                         sh "docker build -t shopping:latest -f docker/Dockerfile ."
                         sh "docker tag shopping:latest venkatahyndavi/shopping:latest"
                         sh "docker push venkatahyndavi/shopping:latest"
+                        sh "docker run -d --name shopping-cart -p 8070:8070 venkatahyndavi/shopping:latest"
                     }
                 }
             }
