@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Sonarqube Analysis') {
             steps{
-                sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.url=http://54.85.144.19:9000/ -Dsonar.login=squ_a0ef0effd28ecd5df729f9e522d92c0e8667afed -Dsonar.projectName=shopping-cart -Dsonar.java.binaries=. -Dsonar.projectKey=shopping-cart'''
+                sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.url=http://3.93.59.15:9000/ -Dsonar.login=squ_afc8eeeaf8d1b537812fc5f4658b4745c25b822d -Dsonar.projectName=shopping-cart -Dsonar.java.binaries=. -Dsonar.projectKey=shopping-cart'''
             }
         }
         stage('Build Application') {
@@ -36,7 +36,7 @@ pipeline {
         stage('Build and Push') {
             steps{
                 script{
-                    withDockerRegistry(credentialsId: '856fb3bf-2a2d-4a59-bbdc-98d86e2afdad', toolName: 'docker') {
+                    withDockerRegistry(credentialsId: '2596920f-17f1-4ec4-9ec1-18f01962b0b1', toolName: 'docker') {
                         sh "docker build -t shopping:latest -f docker/Dockerfile ."
                         sh "docker tag shopping:latest venkatahyndavi/shopping:latest"
                         sh "docker push venkatahyndavi/shopping:latest"
