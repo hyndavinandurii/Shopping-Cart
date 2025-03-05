@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        // Install the Maven version configured as "M3" and add it to the path.
+        // Install the Maven version configured as "Maven3"
         maven "maven3"
         jdk "jdk11"
     }
@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Sonarqube Analysis') {
             steps{
-                sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.url=http://18.209.9.202:9000/ -Dsonar.login=squ_3324c0d969e9ceb4eda1bf285c2fe46f2c19506c -Dsonar.projectName=shopping-cart -Dsonar.java.binaries=. -Dsonar.projectKey=shopping-cart'''
+                sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.url=http://54.85.144.19:9000/ -Dsonar.login=squ_a0ef0effd28ecd5df729f9e522d92c0e8667afed -Dsonar.projectName=shopping-cart -Dsonar.java.binaries=. -Dsonar.projectKey=shopping-cart'''
             }
         }
         stage('Build Application') {
@@ -36,7 +36,7 @@ pipeline {
         stage('Build and Push') {
             steps{
                 script{
-                    withDockerRegistry(credentialsId: '0f0fc811-cb0b-4e1b-9c77-7d4b57201da3', toolName: 'docker') {
+                    withDockerRegistry(credentialsId: '856fb3bf-2a2d-4a59-bbdc-98d86e2afdad', toolName: 'docker') {
                         sh "docker build -t shopping:latest -f docker/Dockerfile ."
                         sh "docker tag shopping:latest venkatahyndavi/shopping:latest"
                         sh "docker push venkatahyndavi/shopping:latest"
